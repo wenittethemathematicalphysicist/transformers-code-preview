@@ -28,8 +28,8 @@ const fmt = (v: unknown) => {
 };
 
 function Playground() {
-  const [active, setActive] = useState(EXAMPLES[0].id);
-  const [code, setCode] = useState(EXAMPLES[0].code);
+  const [active, setActive] = useState(EXAMPLES[0]!.id);
+  const [code, setCode] = useState(EXAMPLES[0]!.code);
   const [lines, setLines] = useState<Line[]>([]);
   const [running, setRunning] = useState(false);
   const libRef = useRef<typeof import("@huggingface/transformers") | null>(null);
