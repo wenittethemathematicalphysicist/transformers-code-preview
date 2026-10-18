@@ -27,6 +27,8 @@
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
   --color-background: var(--background);
+  --font-display: var(--font-display);
+  --font-mono: var(--font-mono);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
@@ -62,24 +64,26 @@
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
-  --card: oklch(1 0 0);
+  --radius: 0.5rem;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --background: oklch(0.16 0.01 260);
+  --foreground: oklch(0.94 0.01 90);
+  --card: oklch(0.2 0.012 260);
   --card-foreground: oklch(0.129 0.042 264.695);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
+  --primary: oklch(0.82 0.16 80);
+  --primary-foreground: oklch(0.18 0.02 80);
   --secondary: oklch(0.968 0.007 247.896);
   --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
+  --muted: oklch(0.22 0.012 260);
+  --muted-foreground: oklch(0.65 0.02 260);
+  --accent: oklch(0.25 0.02 260);
   --accent-foreground: oklch(0.208 0.042 265.755);
-  --destructive: oklch(0.577 0.245 27.325);
+  --destructive: oklch(0.7 0.19 25);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
+  --border: oklch(0.28 0.015 260);
   --input: oklch(0.929 0.013 255.508);
   --ring: oklch(0.704 0.04 256.788);
   --chart-1: oklch(0.646 0.222 41.116);
@@ -141,4 +145,14 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
   }
+}
+
+body { font-family: var(--font-display); }
+@layer components {
+  .btn-run { @apply rounded-md bg-primary px-5 py-2 font-mono text-sm font-bold text-primary-foreground transition hover:opacity-90 disabled:opacity-50; box-shadow: 0 0 24px -6px var(--primary); }
+  .chip { @apply whitespace-nowrap rounded-full border border-border px-3 py-1 font-mono text-xs text-muted-foreground transition hover:text-foreground; }
+  .chip-active { @apply border-primary text-primary; }
+  .panel-label { @apply border-b border-border bg-muted px-5 py-2 font-mono text-xs uppercase tracking-widest text-muted-foreground; }
+  .code-area { @apply w-full resize-none bg-card p-5 font-mono text-sm leading-relaxed outline-none; }
+  .code-area pre { @apply whitespace-pre-wrap break-words; }
 }
